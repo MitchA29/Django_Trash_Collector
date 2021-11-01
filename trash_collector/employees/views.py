@@ -42,9 +42,7 @@ def create(request):
     logged_in_user = request.user
     if request.method == "POST":
         name_from_form = request.POST.get('name')
-        address_from_form = request.POST.get('address')
         zip_from_form = request.POST.get('zip_code')
-        weekly_from_form = request.POST.get('weekly_pickup')
         new_employee = Employee(name=name_from_form, user=logged_in_user, zip_code=zip_from_form)
         new_employee.save()
         return HttpResponseRedirect(reverse('employees:index'))
