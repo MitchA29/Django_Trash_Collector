@@ -28,6 +28,7 @@ def index(request):
         non_suspended_customers = pickup_customers.exclude(suspend_start__lte=today, suspend_end__gte=today)
         non_completed_customers = non_suspended_customers.exclude(date_of_last_pickup=today)
         
+        
         context = {
             'logged_in_employee': logged_in_employee,
             'today': today,
@@ -72,13 +73,15 @@ def edit_profile(request):
         return render(request, 'employees/edit_profile.html', context)
 
 @login_required
-def completed_pickup(request):
+def completed_pickup(request, customer_id):
     logged_in_user = request.user
     logged_in_employee = Employee.objects.get(user=logged_in_user)
+    completed_customer = Customer.objects.get(id=customer_id)
 
     if request.method == "GET":
-        Customer.date_of_last_pickup = date.today()
-        Customer.balance = Customer.balance + 20
+        completed_customer.date_of_last_pickup = date.today()
+        completed_customer.balance += 20
+        completed_customer.save()
         return HttpResponseRedirect(reverse('employees:index'))
-    else:
-        return render(request, 'index.html')
+    
+    

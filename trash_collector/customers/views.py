@@ -80,10 +80,12 @@ def edit_profile(request):
         address_from_form = request.POST.get('address')
         zip_from_form = request.POST.get('zip_code')
         weekly_pickup_from_form = request.POST.get('weekly')
+        balance_from_form = request.POST.get('balance')
         logged_in_customer.name = name_from_form
         logged_in_customer.address = address_from_form
         logged_in_customer.zip_code = zip_from_form
         logged_in_customer.weekly_pickup = weekly_pickup_from_form
+        logged_in_customer.balance = balance_from_form
         logged_in_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
