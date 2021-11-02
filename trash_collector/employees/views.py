@@ -70,3 +70,15 @@ def edit_profile(request):
             'logged_in_employee': logged_in_employee
         }
         return render(request, 'employees/edit_profile.html', context)
+
+@login_required
+def completed_pickup(request):
+    logged_in_user = request.user
+    logged_in_employee = Employee.objects.get(user=logged_in_user)
+
+    if request.method == "GET":
+        Customer.date_of_last_pickup = date.today()
+        Customer.balance = Customer.balance + 20
+        return HttpResponseRedirect(reverse('employees:index'))
+    else:
+        return render(request, 'index.html')
