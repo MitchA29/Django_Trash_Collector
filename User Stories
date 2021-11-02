@@ -10,7 +10,7 @@ It is your task to build out the employee-side of this application to allow empl
 (5 points): As a developer, I want to utilize Django Auth Groups for this application. 
 ## (5 points): As a developer, I want to adhere to the naming conventions & best practices established in the starter code so that my code will seamlessly integrate to the existing project landscape.
 ## (10 points): As a newly-registered User, I want to complete the registration process and create my Employee profile. 
-(5 points): As a registered employee, I want to be able to edit my employee information to change my name and/or zip code.
+## (5 points): As a registered employee, I want to be able to edit my employee information to change my name and/or zip code.
 (20 points): As a registered employee, I want my index view to be a list of today’s customers who meet ALL the following criteria:
 -	Customers in my zip code
 -	Pickup day is today’s day of week OR One-time pickup date that falls on today
