@@ -5,6 +5,45 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
+    <h1>List of customers in your zip code: </h1>
+    <ul>
+      {% for customer in zip_customers %}
+      <li>
+          <h2>{{customer}} 
+          </h2>
+      </li>
+      {% endfor %}
+  </ul>
+
+  <h1>List of customers to pick up today: </h1>
+  <ul>
+    {% for customer in weekly_pick_up_customers %}
+    <li>
+        <h2>{{customer}} 
+        </h2>
+    </li>
+    {% endfor %}
+</ul>
+
+<h1>List of customers for one time pickup: </h1>
+<ul>
+  {% for customer in one_time_pick_up_customers %}
+  <li>
+      <h2>{{customer}} 
+      </h2>
+  </li>
+  {% endfor %}
+</ul>
+
+<h1>List of customers that are not suspended: </h1>
+<ul>
+  {% for customer in non_suspended_customers %}
+  <li>
+      <h2>{{customer}} 
+      </h2>
+  </li>
+  {% endfor %}
+</ul>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
