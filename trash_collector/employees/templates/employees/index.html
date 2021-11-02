@@ -5,41 +5,11 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
-    <h1>List of customers in your zip code: </h1>
-    <ul>
-      {% for customer in zip_customers %}
-      <li>
-          <h2>{{customer}} 
-          </h2>
-      </li>
-      {% endfor %}
-  </ul>
-
-  <h1>List of customers to pick up today: </h1>
-  <ul>
-    {% for customer in weekly_pick_up_customers %}
-    <li>
-        <h2>{{customer}} 
-        </h2>
-    </li>
-    {% endfor %}
-</ul>
-
-<h1>List of customers for one time pickup: </h1>
+<h1>Pick Ups Today: </h1>
 <ul>
-  {% for customer in one_time_pick_up_customers %}
+  {% for customer in non_completed_customers %}
   <li>
-      <h2>{{customer}} 
-      </h2>
-  </li>
-  {% endfor %}
-</ul>
-
-<h1>List of customers that are not suspended: </h1>
-<ul>
-  {% for customer in non_suspended_customers %}
-  <li>
-      <h2>{{customer}} 
+      <h2>{{customer}}
       </h2>
   </li>
   {% endfor %}
