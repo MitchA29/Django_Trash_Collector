@@ -14,6 +14,25 @@
   </li>
   {% endfor %}
 </ul>
+
+<h2>Filter by day:</h2>
+<a href="{% url 'employees:filter_pickup_day' %}">Monday</a> |
+<ul>
+  {% for customer in filter_pickup %}
+  <li>
+      <h2>{{customer}}</h2>
+  </li>
+  {% endfor %}
+</ul>
+<a href="#">Tuesday</a> |
+<a href="#">Wednesday</a> |
+<a href="#">Thursday</a> |
+<a href="#">Friday</a> |
+<a href="#">Saturday</a> |
+<a href="#">Sunday</a>
+
+
+
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

@@ -7,20 +7,21 @@ You have been brought on to a team building an application for a business specia
 It is your task to build out the employee-side of this application to allow employees to access relevant customer data to service their area of responsibility. 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## (5 points): As a developer, I want to make good, consistent commits. 
-(5 points): As a developer, I want to utilize Django Auth Groups for this application. 
+## (5 points): As a developer, I want to utilize Django Auth Groups for this application. 
 ## (5 points): As a developer, I want to adhere to the naming conventions & best practices established in the starter code so that my code will seamlessly integrate to the existing project landscape.
 ## (10 points): As a newly-registered User, I want to complete the registration process and create my Employee profile. 
 ## (5 points): As a registered employee, I want to be able to edit my employee information to change my name and/or zip code.
-(20 points): As a registered employee, I want my index view to be a list of today’s customers who meet ALL the following criteria:
+## (20 points): As a registered employee, I want my index view to be a list of today’s customers who meet ALL the following criteria:
 -	Customers in my zip code
 -	Pickup day is today’s day of week OR One-time pickup date that falls on today
 -	Non-suspended accounts
 -	Trash has not yet been picked up today
-(10 points): As a registered employee, I want a button/link displayed with each pickup in my daily list that I can click to “confirm” a pickup.
-(5 points): As a registered employee, I want all confirmed pickups to have a charge of $20 applied to the customer.
+## (10 points): As a registered employee, I want a button/link displayed with each pickup in my daily list that I can click to “confirm” a pickup.
+## (5 points): As a registered employee, I want all confirmed pickups to have a charge of $20 applied to the customer.
 (10 points): As a registered employee, I want to be able to choose a day of the week to filter by, and see all customers who gets a weekly pickup on the day selected. (One time pickups do NOT need to be displayed)
-(5 points): As an employee, I want to utilize an ‘employee_base.html’ parent template that includes a  navbar to direct me to links for my default daily view, profile edit, and any other pages needed.
+## (5 points): As an employee, I want to utilize an ‘employee_base.html’ parent template that includes a  navbar to direct me to links for my default daily view, profile edit, and any other pages needed.
 (5 points): As a developer, I want to utilize the Bootstrap Content Delivery Network (CDN) on the base.html parent template to stylize my templates in an attractive manner.
+
 Bonus User Stories (bonus points only earned if all base user stories attempted):
 (5 points): As an employee, I want to be able to select a customer profile and see their address with a pin on a map (Google Maps API, Google Geocoding API).
 (5 points): As a developer, I want to integrate a payment API to allow customers to make payments on the application. 

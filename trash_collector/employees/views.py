@@ -32,8 +32,6 @@ def index(request):
         context = {
             'logged_in_employee': logged_in_employee,
             'today': today,
-            'weekday': weekday,
-            'day': day,
             'zip_customers': zip_customers,
             'pickup_customers': pickup_customers,
             'non_suspended_customers': non_suspended_customers,
@@ -83,5 +81,13 @@ def completed_pickup(request, customer_id):
         completed_customer.balance += 20
         completed_customer.save()
         return HttpResponseRedirect(reverse('employees:index'))
-    
-    
+
+
+@login_required
+def filter_pickup_day(request, day):
+    if request.method == "GET":
+        filter_pickup = Customer.objects.filter(weekly_pickup=day)
+        context = {
+            'filter_pickup': filter_pickup,
+        }
+        return render(request, 'employees/filter_pickup_day.html', context)

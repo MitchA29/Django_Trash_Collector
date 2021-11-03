@@ -9,5 +9,6 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('new/', views.create, name="create"),
     path('edit_profile/', views.edit_profile, name="edit_profile"),
-    path('<int:customer_id>/', views.completed_pickup, name="completed_pickup")
+    path('<int:customer_id>/', views.completed_pickup, name="completed_pickup"),
+    path('filter/<str:day>', views.filter_pickup_day, name='filter_pickup_day'),
 ]
