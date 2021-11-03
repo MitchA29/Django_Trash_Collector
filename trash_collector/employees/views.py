@@ -32,7 +32,7 @@ def index(request):
         context = {
             'logged_in_employee': logged_in_employee,
             'today': today,
-            'weekday': weekday,
+            'weekdays': weekdays,
             'zip_customers': zip_customers,
             'pickup_customers': pickup_customers,
             'non_suspended_customers': non_suspended_customers,
@@ -86,9 +86,13 @@ def completed_pickup(request, customer_id):
 
 @login_required
 def filter_pickup_day(request, day):
-    if request.method == "GET":
-        filter_pickup = Customer.objects.filter(weekly_pickup=day)
-        context = {
+    try:
+        if request.method == "GET":
+            filter_pickup = Customer.objects.filter(weekly_pickup=day)
+            context = {
             'filter_pickup': filter_pickup,
-        }
-        return render(request, 'employees/filter_pickup_day.html', context)
+            }
+            return render(request, 'employees/index.html', context)
+    except ObjectDoesNotExist:
+        return HttpResponseRedirect(reverse('employees:filter_pickup_day'))
+

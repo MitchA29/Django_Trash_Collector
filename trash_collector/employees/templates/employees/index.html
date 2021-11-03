@@ -5,33 +5,32 @@
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
-<h1>Pick Ups Today: </h1>
-<ul>
-  {% for customer in non_completed_customers %}
-  <li>
-      <h2>{{customer}} - <a href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
-      </h2>
-  </li>
-  {% endfor %}
-</ul>
+    <h1>Pick Ups Today: </h1>
+    <ul>
+      {% for customer in non_completed_customers %}
+      <li>
+          <h2>{{customer}} - <a href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
+          </h2>
+      </li>
+      {% endfor %}
+    </ul>
 
-<h2>Filter by day:</h2>
-<a href="{% url 'employees:filter_pickup_day' weekday.index[0] %}">Monday</a> |
-<ul>
-  {% for customer in filter_pickup %}
-  <li>
-      <h2>{{customer}}</h2>
-  </li>
-  {% endfor %}
-</ul>
-<a href="#">Tuesday</a> |
-<a href="#">Wednesday</a> |
-<a href="#">Thursday</a> |
-<a href="#">Friday</a> |
-<a href="#">Saturday</a> |
-<a href="#">Sunday</a>
-
-
+    <h2>Filter by day:</h2>
+    <ul>
+      {% for day in weekdays %}
+      <li>
+          <h2><a href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
+      </li>
+      {% endfor %}
+    </ul>
+    
+      <ul>
+        {% for customer in filter_pickup %}
+        <li>
+            <h2>{{ customer }}</h2>
+        </li>
+        {% endfor %}
+    </ul>
 
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
