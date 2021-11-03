@@ -16,7 +16,7 @@
 </ul>
 
 <h2>Filter by day:</h2>
-<a href="{% url 'employees:filter_pickup_day' %}">Monday</a> |
+<a href="{% url 'employees:filter_pickup_day' weekday.index[0] %}">Monday</a> |
 <ul>
   {% for customer in filter_pickup %}
   <li>

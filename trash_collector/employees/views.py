@@ -32,6 +32,7 @@ def index(request):
         context = {
             'logged_in_employee': logged_in_employee,
             'today': today,
+            'weekday': weekday,
             'zip_customers': zip_customers,
             'pickup_customers': pickup_customers,
             'non_suspended_customers': non_suspended_customers,
