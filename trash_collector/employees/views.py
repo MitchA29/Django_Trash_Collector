@@ -86,9 +86,12 @@ def completed_pickup(request, customer_id):
 
 @login_required
 def filter_pickup_day(request, day):
+    logged_in_user = request.user
+    logged_in_employee = Employee.objects.get(user=logged_in_user)
     try:
         if request.method == "GET":
-            filter_pickup = Customer.objects.filter(weekly_pickup=day)
+            zip_customers = Customer.objects.filter(zip_code =logged_in_employee.zip_code )
+            filter_pickup = zip_customers.filter(weekly_pickup=day)
             context = {
             'filter_pickup': filter_pickup,
             }
