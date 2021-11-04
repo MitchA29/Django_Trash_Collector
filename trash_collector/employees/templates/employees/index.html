@@ -1,7 +1,5 @@
 {% extends 'employees/employee_base.html' %}
-
 {% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
-
 {% block content %}
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
@@ -14,22 +12,21 @@
       </li>
       {% endfor %}
     </ul>
-
-<!-- Testing -->
-<label for="filter_day"></label>
-<select class="form-select" aria-label="Default select example">
-  <option selected>Filter by day:</option>
-  <option value="1" href="{% url 'employees:filter_pickup_day' Monday %}" name="Monday">Monday</option>
-  <option value="2" href="{% url 'employees:filter_pickup_day' Tuesday %}" name="Tuesday">Tuesday</option>
-  <option value="3" href="{% url 'employees:filter_pickup_day' Wednesday %}" name="Wednesday">Wednesday</option>
-  <option value="4" href="{% url 'employees:filter_pickup_day' Thursday %}" name="Thursday">Thursday</option>
-  <option value="5" href="{% url 'employees:filter_pickup_day' Friday %}" name="Friday">Friday</option>
-  <option value="6" href="{% url 'employees:filter_pickup_day' Saturday %}" name="Saturday">Saturday</option>
-  <option value="7" href="{% url 'employees:filter_pickup_day' Sunday %}" name="Sunday">Sunday</option>
-</select>
-<!-- Testing -->
-
-
+    <h2>Filter by day:</h2>
+    <ul>
+      {% for day in weekdays %}
+      <li>
+          <h2><a href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
+      </li>
+      {% endfor %}
+    </ul>
+      <ul>
+        {% for customer in filter_pickup %}
+        <li>
+            <h2>{{ customer }}</h2>
+        </li>
+        {% endfor %}
+    </ul>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>

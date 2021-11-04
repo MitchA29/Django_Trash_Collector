@@ -9,7 +9,8 @@
   <form method="post" align="left">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Sign Up</button>
+    <button class="btn btn-outline-warning" type="submit">Sign Up</button>
   </form>
-  <p>Already Registered? <a href='{% url "login" %}'>Sign in</a></p>
+  <p>Already Registered? <br>
+    <a class="btn btn-outline-success mt-2" href='{% url "login" %}'>Log in</a></p>
 {% endblock %}

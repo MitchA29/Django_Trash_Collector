@@ -11,10 +11,4 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name="edit_profile"),
     path('<int:customer_id>/', views.completed_pickup, name="completed_pickup"),
     path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<str:day>/', views.filter_pickup_day, name='filter_pickup_day'),
-    path('filter/<Monday>/', views.filter_pickup_day, name='filter_pickup_day'),
 ]
