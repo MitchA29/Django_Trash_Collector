@@ -7,7 +7,7 @@
     <ul>
       {% for customer in non_completed_customers %}
       <li>
-          <h2>{{customer}} - <a href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
+          <h2>{{customer}}  <a type="button" class="btn btn-success" href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
           </h2>
       </li>
       {% endfor %}
