@@ -27,6 +27,14 @@ def index(request):
         pickup_customers = zip_customers.filter(weekly_pickup=day) | zip_customers.filter(one_time_pickup=today)
         non_suspended_customers = pickup_customers.exclude(suspend_start__lte=today, suspend_end__gte=today)
         non_completed_customers = non_suspended_customers.exclude(date_of_last_pickup=today)
+        Monday = "Monday"
+        Tuesday = "Tuesday"
+        Wednesday = "Wednesday"
+        Thursday = "Thursday"
+        Friday = "Friday"
+        Saturday = "Saturday"
+        Sunday = "Sunday"
+        days_of_the_week = [Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday]
         
         
         context = {
@@ -36,7 +44,15 @@ def index(request):
             'zip_customers': zip_customers,
             'pickup_customers': pickup_customers,
             'non_suspended_customers': non_suspended_customers,
-            'non_completed_customers': non_completed_customers
+            'non_completed_customers': non_completed_customers,
+            'Monday': Monday,
+            'Tuesday': Tuesday,
+            'Wednesday': Wednesday,
+            'Thursday': Thursday,
+            'Friday': Friday,
+            'Saturday': Saturday,
+            'Sunday': Sunday,
+            'days_of_the_week': days_of_the_week
         }
         return render(request, 'employees/index.html', context)
     except ObjectDoesNotExist:
@@ -88,12 +104,14 @@ def completed_pickup(request, customer_id):
 def filter_pickup_day(request, day):
     logged_in_user = request.user
     logged_in_employee = Employee.objects.get(user=logged_in_user)
+    today = date.today()
     try:
         if request.method == "GET":
-            zip_customers = Customer.objects.filter(zip_code =logged_in_employee.zip_code )
-            filter_pickup = zip_customers.filter(weekly_pickup=day)
+            zip_customers = Customer.objects.filter(zip_code =logged_in_employee.zip_code)
+            non_suspended = zip_customers.exclude(suspend_start__lte=today, suspend_end__gte=today)
+            filter_pickup = non_suspended.filter(weekly_pickup= day)
             context = {
-            'filter_pickup': filter_pickup,
+            'filter_pickup_monday': filter_pickup,
             }
             return render(request, 'employees/index.html', context)
     except ObjectDoesNotExist:

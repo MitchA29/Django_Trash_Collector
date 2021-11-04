@@ -19,13 +19,12 @@
     <ul>
       {% for day in weekdays %}
       <li>
-          <h2><a href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
+        <h2><a type="button" class="btn btn-success" href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
       </li>
       {% endfor %}
     </ul>
     
-      <ul>
-        {% for customer in filter_pickup %}
+        {% for customer in filter_pickup_monday %}
         <li>
             <h2>{{ customer }}</h2>
         </li>
