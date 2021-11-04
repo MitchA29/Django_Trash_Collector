@@ -1,13 +1,12 @@
 {% extends 'employees/employee_base.html' %}
-{% block title %}{% block header %} Employee Home {% endblock %}{% endblock %}
 {% block content %}
   {% if user.is_authenticated %}
-    Hello Employee {{ user.username }}!
+    <h1>Hello Employee {{ user.username }}!</h1>
     <h1>Pick Ups Today: </h1>
     <ul>
       {% for customer in non_completed_customers %}
-      <li>
-          <h2>{{customer}}  <a type="button" class="btn btn-success" href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
+      <li style="list-style:none;">
+          <h2>{{customer}}  <a style="width:100px;" type="button" class="btn btn-success" href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
           </h2>
       </li>
       {% endfor %}
@@ -15,15 +14,15 @@
     <h2>Filter by day:</h2>
     <ul>
       {% for day in weekdays %}
-      <li>
-        <h2><a type="button" class="btn btn-success" href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
+      <li style="list-style: none;">
+        <h2><a style="width:100px;" type="button" class="btn btn-success" href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
       </li>
       {% endfor %}
     </ul>
 
       <ul>
         {% for customer in filter_pickup %}
-        <li>
+        <li style="list-style: none;">
             <h2>{{ customer }}</h2>
         </li>
         {% endfor %}
