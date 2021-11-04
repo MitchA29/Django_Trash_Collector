@@ -13,7 +13,7 @@
   Hello {{ user.username }}. You don't have a group assigned. Please contact administrator or attempt to register again.
   <p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
-  <p>You are not logged in. Please log in or create an account.</p>
+  <p class="loggedInPTag">You are not logged in. Please log in or create an account.</p>
   <a id="testButton" class="btn btn-outline-info" role="button" href="{% url 'login' %}">Log In</a>
   <a class="btn btn-outline-warning" role="button" href="{% url 'accounts:register' %}">Sign Up</a>
 {% endif %}
