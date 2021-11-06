@@ -2,27 +2,27 @@
 {% block content %}
   {% if user.is_authenticated %}
     <h1>Hello Employee {{ user.username }}!</h1>
-    <h1>Pick Ups Today: </h1>
+    <h3>Pick Ups Today: </h3>
     <ul>
       {% for customer in non_completed_customers %}
-      <li style="list-style:none;">
-          <h2>{{customer}}  <a style="width:100px;" type="button" class="btn btn-success" href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
-          </h2>
+      <li>
+          <h4>{{customer}}  <a style="width:80px;" type="button" class="btn btn-warning employee-button" href="{% url 'employees:completed_pickup' customer.id %}">Complete</a>
+          </h4>
       </li>
       {% endfor %}
     </ul>
     <h2>Filter by day:</h2>
     <ul>
       {% for day in weekdays %}
-      <li style="list-style: none;">
-        <h2><a style="width:100px;" type="button" class="btn btn-success" href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h2>
+      <li>
+        <h3><a style="width:90px;" type="button" class="btn btn-outline-warning employee-button" href="{% url 'employees:filter_pickup_day' day %}">{{day}}</a></h3>
       </li>
       {% endfor %}
     </ul>
 
       <ul>
         {% for customer in filter_pickup %}
-        <li style="list-style: none;">
+        <li>
             <h2>{{ customer }}</h2>
         </li>
         {% endfor %}

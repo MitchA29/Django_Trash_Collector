@@ -7,20 +7,20 @@
 {% block content %}
   {% if user.is_authenticated %}
         Hello {{ logged_in_customer.name }}!<br />
-        Address: {{ logged_in_customer.address }} {{logged_in_customer.zip_code }}<br />
-        Current balance: $ {{ logged_in_customer.balance }}.00
+        <strong>Address:</strong> {{ logged_in_customer.address }} {{logged_in_customer.zip_code }}<br />
+        <strong>Current balance:</strong> $ {{ logged_in_customer.balance }}.00
         <br />
         <br />
-        Your Weekly Pickup Day: {{ logged_in_customer.weekly_pickup }}
+        <strong>Your Weekly Pickup Day:</strong> {{ logged_in_customer.weekly_pickup }}
         <br />
         <br />
         {% if logged_in_customer.one_time_pickup %}
-          You have an extra pickup scheduled for {{ logged_in_customer.one_time_pickup }}
+        <strong>You have an extra pickup scheduled for</strong> {{ logged_in_customer.one_time_pickup }}
         {% endif %}
         <br />
         <br />
         {% if today > logged_in_customer.suspend_start and today < logged_in_customer.suspend_end %}
-          Your pickups are suspended until {{ logged_in_customer.suspend_end }}
+         <strong>Your pickups are suspended until</strong> {{ logged_in_customer.suspend_end }}
         {% endif %}
 
   {% else %}

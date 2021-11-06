@@ -1,0 +1,26 @@
+h1, h2, h3, h4, p {
+    font-family: 'Oswald', sans-serif;
+}
+li {
+    list-style-type: none;
+}
+main {
+    background-color: darkkhaki;
+    height: 100vh;
+    padding-top: 5%;
+}
+main .col-8 {
+    background-color: darkolivegreen;
+}
+a {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+button {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+input {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
